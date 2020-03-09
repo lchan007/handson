@@ -1,7 +1,7 @@
 ---
 # tasks file for motd
 - name: Pull data and save to var
-  command: curl -s 'https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?start_date=2018-03-26&end_date=2018-03-26&api_key=rQW6A_tE6Ampfxxyvp-H' | jq '.dataset_data.data[][2]'
+  command: api_cmd
     warn: false
   register: curl_out
 
