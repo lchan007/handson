@@ -11,7 +11,10 @@ If the host's Operating System is Ubuntu, display the ip address and the fiction
 When the role is completed, create a pull request and merge to master.
 
 ### Appendix
-Quandl API Documentation:
-https://docs.quandl.com/docs/in-depth-usage
-Dataset:
-https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?api_key=rQW6A_tE6Ampfxxyvp-H
+1. Quandl API Documentation: https://docs.quandl.com/docs/in-depth-usage
+2. Dataset: https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?api_key=rQW6A_tE6Ampfxxyvp-H
+
+
+
+
+curl -s "https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?start_date=2018-03-26&end_date=2018-03-26&api_key=rQW6A_tE6Ampfxxyvp-H" | jq '.dataset_data.data[][2]'
