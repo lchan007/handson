@@ -1,0 +1,21 @@
+---
+# tasks file for motd
+- name: Pull data and save to var
+  command: "curl -s 'https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?start_date=2018-03-26&end_date=2018-03-26&api_key=rQW6A_tE6Ampfxxyvp-H' | jq '.dataset_data.data[][2]'.stdout"
+  register: curl_out
+
+- debug: 
+    msg: "{{curl_out.stdout}}"
+
+- name: Set fact for api data
+  set_fact:
+    wiki: "{{curl_out.stdout}}"
+    cacheable: yes
+
+- name: Configure MOTD
+  template:
+    src: 10-banner-text.j2
+    dest: /etc/update-motd.d/10-banner-text
+    owner: root
+    group: root
+    mode: 0644
