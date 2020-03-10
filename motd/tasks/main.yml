@@ -11,9 +11,9 @@
   set_fact:
     stock_data: "{{api_cmd_out.stdout}}"
     cacheable: yes
-  when: ansible_facts['os_family'] == 'Ubuntu'
+  when: ansible_facts['os_family'] == 'Debian'
 
-- name: Configure MOTD
+- name: Append MOTD
   template:
     src: 10-banner-text.j2
     dest: /etc/update-motd.d/10-banner-text
