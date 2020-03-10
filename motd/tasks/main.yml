@@ -13,6 +13,9 @@
     cacheable: yes
   when: ansible_facts['os_family'] == 'Debian'
 
+- name: Unset Default MOTD files
+  command: chmod -x /etc/update-motd.d/*
+
 - name: Append MOTD
   template:
     src: 10-banner-text.j2
