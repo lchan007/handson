@@ -1,8 +1,8 @@
 #!/bin/sh
 printf
-printf IP Address is {{ ansible_all_ipv4_addresses[1] }}
+printf "IP Address is {{ ansible_all_ipv4_addresses[1] }}"
 printf
 {% if stock_data is defined %}
-printf Opening stock price: {{ stock_data }}
+printf "Opening stock price: {{ stock_data }}"
 {% endif %}
 printf "\n"
