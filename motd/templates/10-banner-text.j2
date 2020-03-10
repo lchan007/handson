@@ -2,7 +2,9 @@
 printf
 printf "Primary Interface IP Address: {{ ansible_all_ipv4_addresses[1] }}"
 printf "\n"
+printf "\n"
 {% if stock_data is defined %}
 printf "Opening stock price: {{ stock_data }}"
 {% endif %}
+printf "\n"
 printf "\n"
