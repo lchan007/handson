@@ -1,17 +1,17 @@
 ---
 # tasks file for motd
-- name: Pull data and save to var
-  command: api_cmd
-    warn: false
-  register: curl_out
+- name: Pull dataset and save to variable
+  shell: curl -s 'https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?start_date=2018-03-26&end_date=2018-03-26&api_key=rQW6A_tE6Ampfxxyvp-H' | jq '.dataset_data.data[][2]'
+  register: api_cmd_out
 
 - debug: 
-    msg: "{{curl_out.stdout}}"
+    msg: "{{api_cmd_out.stdout}}"
 
-- name: Set fact for api data
+- name: Set fact for dataset
   set_fact:
-    wiki: "{{curl_out.stdout}}"
+    stock_data: "{{api_cmd_out.stdout}}"
     cacheable: yes
+  when: ansible_facts['os_family'] == 'Ubuntu'
 
 - name: Configure MOTD
   template:
