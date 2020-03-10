@@ -1,13 +1,22 @@
 # Hands On lab
 
 ## Instructions
-Create an Ansible role to modify the MOTD. The role should be in version control.
+Create an Ansible role to customize the MOTD(Message of the Day). The role should be in version control.
 
-The MOTD should display the message: ip addresses of this host.
+Remove the default MOTD banner. The MOTD should display the message: ip addresses of this host.
 
-If the host's Operating System is RedHat, display the ip address.
+If the host's Operating System is RedHat, display the Primary ip address.
+```
+Primary Interface IP Address:
+```
 
-If the host's Operating System is Ubuntu, display the ip address and the fictionary stock "WIKI" Opening stock price on 2018-03-26 using Quandl API.
+If the host's Operating System is Debian, display the Primary ip address and the fictionary stock "WIKI" Opening price on 2018-03-26 using Quandl API.
+
+```
+Primary Interface IP Address:
+
+Opening stock price:
+```
 
 When the role is completed, create a pull request.
 
