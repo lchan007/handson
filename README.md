@@ -3,9 +3,10 @@
 ## Instructions
 Create an Ansible role to customize the MOTD(Message of the Day). The role should be in version control.
 
-Remove the default MOTD banner. The MOTD should display the message: ip addresses of this host.
+1. Remove the default MOTD banner. The MOTD should display the message: ip addresses of this host.
+2. MOTD for Ubuntu is located on /etc/update-motd.d/10-banner-text.
 
-If the host's Operating System is RedHat, display the Primary ip address.
+Optional: If the host's Operating System is RedHat, display the Primary ip address.
 ```
 Primary Interface IP Address:
 ```
