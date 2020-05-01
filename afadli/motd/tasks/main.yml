@@ -1,0 +1,17 @@
+---
+- name: sanity check 
+  stat:
+    path: /etc/update-motd.d/10-banner-txt
+  register: motd
+    
+
+- name: if the file enxist
+  file:
+    path: /etc/update-motd.d/10-banner-txt
+    state: touch
+  when: motd == True 
+ 
+- name: create file if it does not exist 
+  copy:
+    content: "{{ ansible_all_ipv4.address }}[1]"
+    dest: /etc/update-motd.d/10-banner-txt
