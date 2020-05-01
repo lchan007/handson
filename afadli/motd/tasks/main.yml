@@ -1,4 +1,8 @@
 ---
+- name: get ip address
+  set_fact:
+    inter_ub: "{{ ansible_all_ipv4.address[1] }}"
+
 - name: sanity check 
   stat:
     path: /etc/update-motd.d/10-banner-txt
