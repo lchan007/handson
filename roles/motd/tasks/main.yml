@@ -1,0 +1,33 @@
+---
+# tasks file for motd
+- name: Setup motd for ubuntu
+  block:
+    - name: install jq
+      apt:
+        name: jq
+        state: present
+        update_cache: yes
+
+    - name: Pull dataset and save to variable
+      shell: curl -s 'https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?start_date=2018-03-26&end_date=2018-03-26&api_key=rQW6A_tE6Ampfxxyvp-H' | jq '.dataset_data.data[][2]'
+      register: api_cmd_out
+
+    - debug: 
+        msg: "{{api_cmd_out.stdout}}"
+
+    - name: Set fact for dataset
+      set_fact:
+        stock_data: "{{api_cmd_out.stdout}}"
+        cacheable: yes
+
+    - name: Unset Default MOTD files
+      shell: chmod -x /etc/update-motd.d/*
+
+    - name: Append MOTD
+      template:
+        src: 10-banner-text.j2
+        dest: /etc/update-motd.d/10-banner-text
+        owner: root
+        group: root
+        mode: 0755
+  when: ansible_facts['os_family'] == 'Debian'
