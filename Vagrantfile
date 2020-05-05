@@ -25,7 +25,6 @@ boxes =[
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
   config.vm.provider "virtualbox" do |vb|
-  config.vm.synced_folder "~/.ssh/", "/root/.ssh/",
     owner: "root", group: "root"
   vb.customize ["modifyvm", :id, "--memory", "1024"]
   # http://www.virtualbox.org/manual/ch09.html#nat-adv-dns
